@@ -20,6 +20,8 @@ public class Customer {
 
     private String name;
     private String surname;
+
+    @Column(unique = true)
     private String email;
     private String password;
     private boolean isActivated=false;
