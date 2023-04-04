@@ -1,32 +1,68 @@
 package com.example.models.customer;
 
-import com.example.models.activationToken.ActivationToken;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
+
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-public class Customer {
+@Data
+@Builder
+@Table(name="customer")
+public class Customer implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
-    private String surname;
+    private String firstname;
+    private String lastname;
 
     @Column(unique = true)
     private String email;
     private String password;
-    private boolean isActivated=false;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private ActivationToken activationToken;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
