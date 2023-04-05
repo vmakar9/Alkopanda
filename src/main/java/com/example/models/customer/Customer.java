@@ -1,5 +1,6 @@
 package com.example.models.customer;
 
+import com.example.models.token.Token;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,6 +28,9 @@ public class Customer implements UserDetails {
     @Column(unique = true)
     private String email;
     private String password;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Token> tokens;
 
     @Enumerated(EnumType.STRING)
     private Role role;
