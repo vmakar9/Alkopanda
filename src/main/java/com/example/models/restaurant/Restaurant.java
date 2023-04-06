@@ -1,13 +1,12 @@
 package com.example.models.restaurant;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.models.comments.Comments;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 
 
@@ -26,5 +25,18 @@ public class Restaurant {
     private String description;
     private Long rating;
 
+    private boolean isParking;
 
+    private boolean isWifi;
+
+    private Long minprice;
+    private Long maxprice;
+
+    private Long averageprice;
+
+
+
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Comments comments;
 }
