@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.service.authenticationservice;
 
 import com.example.controller.Auth.AuthenticationRequest;
 import com.example.controller.Auth.AuthenticationResponse;
@@ -6,6 +6,7 @@ import com.example.controller.Auth.RegisterRequest;
 import com.example.dao.CustomerDAO;
 import com.example.models.customer.Customer;
 import com.example.models.customer.Role;
+import com.example.service.jwtservice.JwtService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.authentication.AuthenticationManager;

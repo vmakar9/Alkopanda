@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.config.applicationconfig;
 
 import com.example.dao.CustomerDAO;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
-package com.example.config;
+package com.example.config.jwtauthenticationfilter;
 
 import com.example.dao.TokenDAO;
-import com.example.service.JwtService;
+import com.example.service.jwtservice.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

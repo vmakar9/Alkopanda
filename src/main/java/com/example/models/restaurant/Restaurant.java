@@ -34,9 +34,6 @@ public class Restaurant {
 
     private Long averageprice;
 
-
-
-
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Comments comments;
 }

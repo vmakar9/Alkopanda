@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.service.LogoutService;
 
 import com.example.dao.TokenDAO;
 import jakarta.servlet.http.HttpServletRequest;
