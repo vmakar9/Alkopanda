@@ -29,6 +29,11 @@ public class RestaurantService {
         return new ResponseEntity<>(restaurantList, HttpStatusCode.valueOf(200));
     }
 
+    public ResponseEntity<Restaurant> getoneRestaurants(int id){
+        Restaurant restaurant = restaurantDAO.findById(id).get();
+        return new ResponseEntity<>(restaurant,HttpStatusCode.valueOf(200));
+    }
+
     public void updateRestaurantById(Restaurant restaurant){
         restaurantDAO.save(restaurant);
     }
@@ -49,36 +54,40 @@ public class RestaurantService {
         return new ResponseEntity<>(restaurantDAO.findByWifi(wifi),HttpStatusCode.valueOf(200));
     }
 
-    public ResponseEntity<List<Restaurant>> sortRestaurantByRaitingASC(Long raiting){
-        return new ResponseEntity<>(restaurantDAO.sortRestaurantbyRaitingASC(raiting),HttpStatusCode.valueOf(200));
+    public ResponseEntity<List<Restaurant>> getRestuarantByRating(Long raiting){
+        return new ResponseEntity<>(restaurantDAO.findByRating(raiting),HttpStatusCode.valueOf(200));
     }
 
-    public ResponseEntity<List<Restaurant>> sortRestaurantByRaitingDESC(Long raiting){
-        return  new ResponseEntity<>(restaurantDAO.sortRestaurantbyRaitingDESC(raiting),HttpStatusCode.valueOf(200));
+    public ResponseEntity<List<Restaurant>> sortRestaurantByRaitingASC(){
+        return new ResponseEntity<>(restaurantDAO.sortRestuarantByRatingASC(),HttpStatusCode.valueOf(200));
     }
 
-    public ResponseEntity<List<Restaurant>> sortRestaurantByMinPriceASC(Long minprice){
-        return new ResponseEntity<>(restaurantDAO.sortRestaurantbyMinPriceASC(minprice),HttpStatusCode.valueOf(200));
+    public ResponseEntity<List<Restaurant>> sortRestaurantByRaitingDESC(){
+        return new ResponseEntity<>(restaurantDAO.sortRestuarantByRatingDESC(),HttpStatusCode.valueOf(200));
     }
 
-    public ResponseEntity<List<Restaurant>> sortRestaurantByMinPriceDESC(Long minprice){
-        return new ResponseEntity<>(restaurantDAO.sortRestaurantbyMinPriceDESC(minprice),HttpStatusCode.valueOf(200));
+    public ResponseEntity<List<Restaurant>> sortRestaurantByMinPriceASC(){
+        return new ResponseEntity<>(restaurantDAO.sortRestaurantByMinPriceASC(),HttpStatusCode.valueOf(200));
     }
 
-    public ResponseEntity<List<Restaurant>> sortRestaurantByMaxPriceASC(Long maxprice){
-        return new ResponseEntity<>(restaurantDAO.sortRestaurantbyMaxPriceASC(maxprice),HttpStatusCode.valueOf(200));
+    public ResponseEntity<List<Restaurant>> sortRestaurantByMinPriceDESC(){
+        return new ResponseEntity<>(restaurantDAO.sortRestaurantByMinPriceDESC(),HttpStatusCode.valueOf(200));
     }
 
-    public ResponseEntity<List<Restaurant>> sortRestaurantByMaxPriceDESC(Long maxprice){
-        return  new ResponseEntity<>(restaurantDAO.sortRestaurantbyMaxPriceDESC(maxprice),HttpStatusCode.valueOf(200));
+    public ResponseEntity<List<Restaurant>> sortRestaurantByMaxPriceASC(){
+        return new ResponseEntity<>(restaurantDAO.sortResturantByMaxPriceASC(),HttpStatusCode.valueOf(200));
     }
 
-    public ResponseEntity<List<Restaurant>> sortRestaurantByAveragePriceASC(Long averageprice){
-        return new ResponseEntity<>(restaurantDAO.sortRestaurantbyAveragePriceASC(averageprice),HttpStatusCode.valueOf(200));
+    public ResponseEntity<List<Restaurant>> sortRestaurantByMaxPriceDESC(){
+        return  new ResponseEntity<>(restaurantDAO.sortRestuarantByMaxPriceDESC(),HttpStatusCode.valueOf(200));
     }
 
-    public ResponseEntity<List<Restaurant>> sortRestaurantByAveragePriceDESC(Long averageprice){
-        return new ResponseEntity<>(restaurantDAO.sortRestaurantbyAveragePriceDESC(averageprice),HttpStatusCode.valueOf(200));
+    public ResponseEntity<List<Restaurant>> sortRestaurantByAveragePriceASC(){
+        return new ResponseEntity<>(restaurantDAO.sortRestaurantByAveragePriceASC(),HttpStatusCode.valueOf(200));
+    }
+
+    public ResponseEntity<List<Restaurant>> sortRestaurantByAveragePriceDESC(){
+        return new ResponseEntity<>(restaurantDAO.sortRestaurantByAveragePriceDESC(),HttpStatusCode.valueOf(200));
     }
 
 

@@ -2,43 +2,37 @@ package com.example.dao;
 
 
 import com.example.models.restaurant.Restaurant;
-import jakarta.persistence.OrderBy;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
 public interface RestaurantDAO extends JpaRepository<Restaurant,Integer> {
     List<Restaurant> findRestaurantByName(String name);
 
-    @OrderBy("rating ASC ")
-    List<Restaurant> sortRestaurantbyRaitingASC(Long rating);
+    @Query("FROM Restaurant order by averageprice ASC")
+   List<Restaurant> sortRestaurantByAveragePriceASC();
+    @Query("FROM Restaurant order by averageprice DESC")
+   List<Restaurant> sortRestaurantByAveragePriceDESC();
 
-    @OrderBy("rating DESC ")
-    List<Restaurant> sortRestaurantbyRaitingDESC(Long rating);
+    @Query("FROM Restaurant order by minprice ASC ")
+   List<Restaurant> sortRestaurantByMinPriceASC();
 
-    @OrderBy("minprice ASC ")
-    List<Restaurant> sortRestaurantbyMinPriceASC(Long minprice);
+    @Query("FROM Restaurant order by minprice DESC")
+   List<Restaurant> sortRestaurantByMinPriceDESC();
 
-    @OrderBy("minprice DESC ")
-    List<Restaurant> sortRestaurantbyMinPriceDESC(Long minprice);
+    @Query("FROM Restaurant order by maxprice ASC")
+   List<Restaurant> sortResturantByMaxPriceASC();
+    @Query("FROM Restaurant order by maxprice DESC ")
+   List<Restaurant> sortRestuarantByMaxPriceDESC();
+    @Query("FROM Restaurant order by rating ASC ")
+   List<Restaurant> sortRestuarantByRatingASC();
+    @Query("FROM Restaurant order by rating DESC ")
+   List<Restaurant> sortRestuarantByRatingDESC();
 
-    @OrderBy("maxprice ASC ")
-    List<Restaurant> sortRestaurantbyMaxPriceASC(Long maxprice);
-
-    @OrderBy("maxprice DESC ")
-    List<Restaurant> sortRestaurantbyMaxPriceDESC(Long maxprice);
-
-    @OrderBy("averageprice ASC ")
-    List<Restaurant> sortRestaurantbyAveragePriceASC(Long averageprice);
-
-    @OrderBy("averageprice DESC ")
-    List<Restaurant> sortRestaurantbyAveragePriceDESC(Long averageprice);
-
-    List<Restaurant> findByWifi(boolean wifi);
+    List<Restaurant> findByRating(Long rating);
 
     List<Restaurant> findByParking(boolean parking);
 
-
-
-
+    List<Restaurant> findByWifi(boolean wifi);
 }
