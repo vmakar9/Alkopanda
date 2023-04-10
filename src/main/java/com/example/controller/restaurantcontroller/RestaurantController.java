@@ -1,8 +1,8 @@
 package com.example.controller.restaurantcontroller;
 
 
+
 import com.example.models.restaurant.Restaurant;
-import com.example.service.commentsservice.CommentsService;
 import com.example.service.restaurantSerive.RestaurantService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RestaurantController {
     private RestaurantService  restaurantService;
-    private CommentsService commentsService;
+
 
 
 
@@ -117,6 +117,10 @@ public class RestaurantController {
     public ResponseEntity<List<Restaurant>> getRestaurantByRaiting(@PathVariable Long rating){
         return restaurantService.getRestuarantByRating(rating);
     }
+
+
+
+
 
 
 }
