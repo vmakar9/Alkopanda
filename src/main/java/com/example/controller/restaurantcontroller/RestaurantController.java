@@ -18,9 +18,6 @@ public class RestaurantController {
     private RestaurantService  restaurantService;
 
 
-
-
-
     @GetMapping("")
     public ResponseEntity<List<Restaurant>> getRestaurants(){
         return restaurantService.getrestaurants();
