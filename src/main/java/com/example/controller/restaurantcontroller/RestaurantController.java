@@ -111,7 +111,7 @@ public class RestaurantController {
     }
 
     @GetMapping("/rating/{rating}")
-    public ResponseEntity<List<Restaurant>> getRestaurantByRaiting(@PathVariable Long rating){
+    public ResponseEntity<List<Restaurant>> getRestaurantByRating(@PathVariable Long rating){
         return restaurantService.getRestuarantByRating(rating);
     }
 
