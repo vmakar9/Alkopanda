@@ -1,8 +1,6 @@
-package com.example.service.restaurantSerive;
+package com.example.service.restaurantService;
 
-import com.example.dao.CustomerDAO;
 import com.example.dao.RestaurantDAO;
-import com.example.models.customer.Customer;
 import com.example.models.restaurant.Restaurant;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
@@ -17,7 +15,7 @@ public class RestaurantService {
     private RestaurantDAO restaurantDAO;
 
     public void saveRestaurant(Restaurant restaurant){
-        if(restaurant.getId()>0){
+        if(restaurant.getRestaurantId()>0){
             restaurantDAO.save(restaurant);
         }else {
             throw new RuntimeException("id lower that zero");
@@ -29,8 +27,8 @@ public class RestaurantService {
         return new ResponseEntity<>(restaurantList, HttpStatusCode.valueOf(200));
     }
 
-    public ResponseEntity<Restaurant> getoneRestaurants(int id){
-        Restaurant restaurant = restaurantDAO.findById(id).get();
+    public ResponseEntity<Restaurant> getoneRestaurants(int restaurantId){
+        Restaurant restaurant = restaurantDAO.findById(restaurantId).get();
         return new ResponseEntity<>(restaurant,HttpStatusCode.valueOf(200));
     }
 
@@ -38,8 +36,8 @@ public class RestaurantService {
         restaurantDAO.save(restaurant);
     }
 
-    public void deleteRestaurant(int id){
-        restaurantDAO.deleteById(id);
+    public void deleteRestaurant(int restaurantId){
+        restaurantDAO.deleteById(restaurantId);
     }
 
     public ResponseEntity<List<Restaurant>> getRestaurantByName(String name){
