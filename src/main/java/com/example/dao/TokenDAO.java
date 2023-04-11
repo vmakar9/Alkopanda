@@ -10,8 +10,8 @@ import java.util.Optional;
 public interface TokenDAO extends JpaRepository<Token,Integer> {
     @Query(value = """
       select t from Token t inner join Customer u\s
-      on t.customer.id = u.id\s
-      where u.id = :id and (t.expired = false or t.revoked = false)\s
+      on t.customer.customerId = u.customerId\s
+      where u.customerId = :id and (t.expired = false or t.revoked = false)\s
       """)
     List<Token> findAllValidTokenByUser(Integer id);
 

@@ -1,5 +1,6 @@
 package com.example.models.customer;
 
+import com.example.models.restaurant.Restaurant;
 import com.example.models.token.Token;
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,7 +9,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -20,7 +23,7 @@ import java.util.List;
 public class Customer implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int customerId;
 
     private String firstname;
     private String lastname;
@@ -34,6 +37,16 @@ public class Customer implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "customer_favorite_restaurant",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "restaurant_id")
+    )
+    private Set<Restaurant> favoriteRestaurants = new HashSet<>();
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

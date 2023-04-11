@@ -3,7 +3,7 @@ package com.example.controller.restaurantcontroller;
 
 
 import com.example.models.restaurant.Restaurant;
-import com.example.service.restaurantSerive.RestaurantService;
+import com.example.service.restaurantService.RestaurantService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,19 +29,19 @@ public class RestaurantController {
            restaurantService.saveRestaurant(restaurant);
     }
 
-    @GetMapping("/{id}")
-    public Restaurant getOneRestaurant(@PathVariable int id){
-        return restaurantService.getoneRestaurants(id).getBody();
+    @GetMapping("/{restaurantId}")
+    public Restaurant getOneRestaurant(@PathVariable int restaurantId){
+        return restaurantService.getoneRestaurants(restaurantId).getBody();
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id){
-        restaurantService.deleteRestaurant(id);
+    @DeleteMapping("/{restaurantId}")
+    public void delete(@PathVariable int restaurantId){
+        restaurantService.deleteRestaurant(restaurantId);
     }
 
-    @PatchMapping("/{id}")
-    public void update(@PathVariable int id,@RequestBody Restaurant restaurant){
-        Restaurant restaurant1 = restaurantService.getoneRestaurants(id).getBody();
+    @PatchMapping("/{restaurantId}")
+    public void update(@PathVariable int restaurantId,@RequestBody Restaurant restaurant){
+        Restaurant restaurant1 = restaurantService.getoneRestaurants(restaurantId).getBody();
 
         restaurant1.setName(restaurant.getName());
         restaurant1.setDirectorname(restaurant.getDirectorname());

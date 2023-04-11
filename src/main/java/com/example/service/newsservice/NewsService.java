@@ -23,16 +23,20 @@ public class NewsService {
         return new ResponseEntity<>(newsList, HttpStatusCode.valueOf(200));
     }
 
-    public News getNewsById(int id){
-        return newsDAO.findById(id).get();
+    public News getNewsById(int newsId){
+        return newsDAO.findById(newsId).get();
     }
 
     public void updateNewsById(News news){
          newsDAO.save(news);
     }
 
-    public void deleteNews(int id){
-        newsDAO.deleteById(id);
+    public void deleteNews(int newsId){
+        newsDAO.deleteById(newsId);
+    }
+
+    public ResponseEntity<List<News>> getByType(String type){
+        return new ResponseEntity<>(newsDAO.findByType(type),HttpStatusCode.valueOf(200));
     }
 
 

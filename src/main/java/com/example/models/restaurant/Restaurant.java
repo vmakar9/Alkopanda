@@ -1,13 +1,15 @@
 package com.example.models.restaurant;
 
-import com.example.models.comments.Comments;
+
+import com.example.models.customer.Customer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -18,7 +20,7 @@ import lombok.Setter;
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int restaurantId;
 
     private String name;
     private String directorname;
@@ -34,6 +36,8 @@ public class Restaurant {
 
     private Long averageprice;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Comments comments;
+    @ManyToMany(mappedBy = "favoriteRestaurants")
+    private Set<Customer> favoritedByCustomers= new HashSet<>();
+
+
 }

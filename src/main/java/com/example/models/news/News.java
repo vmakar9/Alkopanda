@@ -20,7 +20,7 @@ import java.util.Date;
 public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int newsId;
 
     private String description;
 
@@ -29,5 +29,8 @@ public class News {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date date;
+
+    @Enumerated(EnumType.STRING)
+    private NewsType newsType;
 
 }

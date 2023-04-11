@@ -28,19 +28,25 @@ public class NewsController {
         newsService.createNews(news);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<News> getOneNews(@PathVariable int id){
-        News news = newsService.getNewsById(id);
+    @GetMapping("/{newsId}")
+    public ResponseEntity<News> getOneNews(@PathVariable int newsId){
+        News news = newsService.getNewsById(newsId);
         return new ResponseEntity<>(news, HttpStatusCode.valueOf(200));
     }
 
-    @PatchMapping("/{id}")
-    public void patch(@PathVariable int id,@RequestBody News news){
-        News news1 = newsService.getNewsById(id);
+    @PatchMapping("/{newsId}")
+    public void patch(@PathVariable int newsId,@RequestBody News news){
+        News news1 = newsService.getNewsById(newsId);
         news1.setDescription(news.getDescription());
+        news1.setNewsType(news.getNewsType());
         newsService.updateNewsById(news1);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteNews(@PathVariable int id){newsService.deleteNews(id);}
+    @DeleteMapping("/{newsId}")
+    public void deleteNews(@PathVariable int newsId){newsService.deleteNews(newsId);}
+
+    @GetMapping("/{type}")
+    public ResponseEntity<List<News>> getByRole(@PathVariable String type ){
+        return newsService.getByType(type);
+    }
 }
