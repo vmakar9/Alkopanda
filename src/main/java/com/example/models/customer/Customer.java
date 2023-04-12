@@ -38,6 +38,8 @@ public class Customer implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    private String avatarUrl;
+
 
     @ManyToMany
     @JoinTable(

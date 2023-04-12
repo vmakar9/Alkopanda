@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api/customer/{customerId}/favorite-restaurants")
+@RequestMapping("/api/v1/customer/{customerId}/favorite-restaurants")
 @AllArgsConstructor
 public class FavoriteRestaurantController {
     private FavoriteRestaurantService favoriteRestaurantService;
