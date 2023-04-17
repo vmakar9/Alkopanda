@@ -38,7 +38,8 @@ public class Customer implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String avatarUrl;
+    @Column(name = "profile_photo")
+    private byte[] profilePhoto;
 
 
     @ManyToMany
