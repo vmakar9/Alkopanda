@@ -24,6 +24,8 @@ public class SecurityConfig {
 
     private final LogoutHandler logoutHandler;
 
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -31,11 +33,11 @@ public class SecurityConfig {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/**").permitAll()
-                .requestMatchers(HttpMethod.GET,"/api/vi/news").authenticated()
-                .requestMatchers(HttpMethod.POST,"/api/vi/news/**").hasAnyRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE,"/api/vi/news/**").hasAnyRole("ADMIN")
-                .requestMatchers(HttpMethod.PATCH,"/api/vi/news/**").hasAnyRole("ADMIN")
-                .requestMatchers(HttpMethod.GET,"/api/vi/news/**").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.GET,"/api/v1/news").authenticated()
+                .requestMatchers(HttpMethod.POST,"/api/v1/news/**").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE,"/api/v1/news/**").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.PATCH,"/api/v1/news/**").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.GET,"/api/v1/news/**").hasAnyRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
