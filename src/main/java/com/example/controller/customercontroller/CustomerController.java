@@ -8,6 +8,7 @@ import com.example.service.customerservice.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -58,6 +59,20 @@ public class CustomerController {
         }
 
     }
+
+    @GetMapping("/{customerId}/info")
+    public ResponseEntity<Customer> getInfo(@PathVariable int customerId){
+        return new ResponseEntity<>(customerService.getCustomerById(customerId), HttpStatusCode.valueOf(200));
+    }
+
+    @PatchMapping("/{customerId}/info")
+    public void updateInfo(@PathVariable int customerId, @RequestBody Customer customer){
+        Customer customer1 = customerService.getCustomerById(customerId);
+        customer1.setFirstname(customer.getFirstname());
+        customer1.setLastname(customer.getLastname());
+        customerService.updateCustomerById(customer1);
+    }
+
 
 
 

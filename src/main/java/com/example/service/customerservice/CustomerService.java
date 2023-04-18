@@ -43,4 +43,6 @@ public class CustomerService {
     public Customer getCustomerById(int customerId){
         return customerDAO.findById(customerId).get();
     }
+
+
 }
