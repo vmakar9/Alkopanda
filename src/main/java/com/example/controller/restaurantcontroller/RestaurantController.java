@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/vi/restaurant")
+@RequestMapping("/api/v1/restaurant")
 @AllArgsConstructor
 public class RestaurantController {
     private RestaurantService  restaurantService;
